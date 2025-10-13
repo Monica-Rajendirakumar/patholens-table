@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 09, 2025 at 12:03 PM
+-- Generation Time: Oct 13, 2025 at 09:04 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -116,7 +116,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (1, '0001_01_01_000000_create_users_table', 1),
 (2, '0001_01_01_000001_create_cache_table', 1),
 (3, '0001_01_01_000002_create_jobs_table', 1),
-(4, '2025_10_09_085302_create_personal_access_tokens_table', 1);
+(4, '2025_10_09_085302_create_personal_access_tokens_table', 1),
+(5, '2025_10_12_150245_add_user_profile_fields_to_users_table', 2);
 
 -- --------------------------------------------------------
 
@@ -154,15 +155,11 @@ CREATE TABLE `personal_access_tokens` (
 --
 
 INSERT INTO `personal_access_tokens` (`id`, `tokenable_type`, `tokenable_id`, `name`, `token`, `abilities`, `last_used_at`, `expires_at`, `created_at`, `updated_at`) VALUES
-(1, 'App\\Models\\User', 1, 'api-token', '8b6e6635a17def59d478ea99125802be3f560367e5f8ef5a5a410e88a3b34587', '[\"*\"]', NULL, NULL, '2025-10-09 03:55:17', '2025-10-09 03:55:17'),
-(2, 'App\\Models\\User', 2, 'api-token', 'b8e03495d6ee70a26c763ffbf74175188eecbd7f8e20ce2c6de3780ef7d9d471', '[\"*\"]', NULL, NULL, '2025-10-09 04:12:57', '2025-10-09 04:12:57'),
-(3, 'App\\Models\\User', 2, 'api-token', 'd9047512f2c58b983fe1cc112b05c2a0d2bbce0c172a9d7360cd375e50855bea', '[\"*\"]', NULL, NULL, '2025-10-09 04:16:48', '2025-10-09 04:16:48'),
-(4, 'App\\Models\\User', 2, 'api-token', '7075e056bcd4f8dae09ed0751f8ccb61321dbb89187fa43f52d691cd26845357', '[\"*\"]', NULL, NULL, '2025-10-09 04:16:57', '2025-10-09 04:16:57'),
-(5, 'App\\Models\\User', 2, 'api-token', '105c91936e3f5449eca8d1b2d68fde71a0c7b363aa7b9b02bfe8033595b809ac', '[\"*\"]', NULL, NULL, '2025-10-09 04:16:59', '2025-10-09 04:16:59'),
-(6, 'App\\Models\\User', 2, 'api-token', '0c10e41dcd71b2d4f65da014ac05ddf220db3403cb26384b3fee7ec9d2516e23', '[\"*\"]', NULL, NULL, '2025-10-09 04:17:00', '2025-10-09 04:17:00'),
-(7, 'App\\Models\\User', 2, 'api-token', '3a353d5e2527d87cb6cb709cc443c378b79776826d3d19821a4fd432e6aff14a', '[\"*\"]', NULL, NULL, '2025-10-09 04:17:01', '2025-10-09 04:17:01'),
-(8, 'App\\Models\\User', 2, 'api-token', 'afbe046918260b7bc176915c8d05071f124c9d97780758b34ba0314396d27e81', '[\"*\"]', NULL, NULL, '2025-10-09 04:17:02', '2025-10-09 04:17:02'),
-(9, 'App\\Models\\User', 2, 'api-token', 'd4d00663343486dc45d5dbd8bb13ad8aecbaadc555758e95a7b40cca2324d7c9', '[\"*\"]', NULL, NULL, '2025-10-09 04:17:03', '2025-10-09 04:17:03');
+(1, 'App\\Models\\User', 1, 'api-token', '2e9bc9dcae95c76c812feb59fe57b8a27dd3014868a62d5605e2bff6dd81b98c', '[\"*\"]', NULL, NULL, '2025-10-12 09:50:21', '2025-10-12 09:50:21'),
+(2, 'App\\Models\\User', 1, 'api-token', '0fb7f1b34b553a48e845c499186fcdf88153fd29bd8ff88ec779769c3cb72a26', '[\"*\"]', NULL, NULL, '2025-10-12 10:04:33', '2025-10-12 10:04:33'),
+(3, 'App\\Models\\User', 2, 'api-token', '8131e1e154dc455d1d1417be8d7c8119fe6681847cf1a3a73efb7b524e698742', '[\"*\"]', NULL, NULL, '2025-10-12 11:08:58', '2025-10-12 11:08:58'),
+(4, 'App\\Models\\User', 2, 'api-token', '54cd161415f11ca77c96d853063f47b85f0d834e37b054b1567182bfc123c04e', '[\"*\"]', NULL, NULL, '2025-10-12 11:10:41', '2025-10-12 11:10:41'),
+(5, 'App\\Models\\User', 2, 'api-token', '6291437e32f4a3d3af2ac15f344f3131c3dab4c9e9b63e002e2c109fa16b3138', '[\"*\"]', NULL, NULL, '2025-10-12 12:06:03', '2025-10-12 12:06:03');
 
 -- --------------------------------------------------------
 
@@ -179,6 +176,13 @@ CREATE TABLE `sessions` (
   `last_activity` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `sessions`
+--
+
+INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
+('ZeFTQDoCdwWIRK3mZm53k4z2ApOyn9ECejPxhmQz', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36 Edg/141.0.0.0', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiWHpOQ3U3NEpvSGhCQmhyOTFmeDAyUU5KS3lENmJuMURCMHo1SkdDTiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1760290375);
+
 -- --------------------------------------------------------
 
 --
@@ -189,6 +193,9 @@ CREATE TABLE `users` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
+  `age` int(11) DEFAULT NULL,
+  `gender` varchar(50) DEFAULT NULL,
+  `phone_number` varchar(20) DEFAULT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
   `password` varchar(255) NOT NULL,
   `remember_token` varchar(100) DEFAULT NULL,
@@ -200,9 +207,9 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Chandru', 'chandru@example.com', NULL, '$2y$12$.yiiylKSeZaP7EfaDttbjeQV/mqydE4o0j5yTMkz2zLHedRGa0gkm', NULL, '2025-10-09 03:45:28', '2025-10-09 03:45:28'),
-(2, 'Monica', 'Monica@example.com', NULL, '$2y$12$kcdAfiZsik111tcuQYCVVujrVhIj2EJ30.xRnUAAB7y6NFjIX/xQG', NULL, '2025-10-09 04:12:57', '2025-10-09 04:12:57');
+INSERT INTO `users` (`id`, `name`, `email`, `age`, `gender`, `phone_number`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'John Doe', 'john@example.com', 25, 'male', '1234567890', NULL, '$2y$12$555izic5CRZeF8OBU2AGRO6CMugJEiYKWqC4VJDIhvErOedNZ.E/K', NULL, '2025-10-12 09:50:21', '2025-10-12 09:50:21'),
+(2, 'Chandru Ganesh', 'chandruganesh00@gmail.com', 20, 'male', '8072277803', NULL, '$2y$12$kA7eM8Fj9YrTlGfzT33yAOTJ8p6FaFbGtfXoPZRPSeBfjp30dHXLy', NULL, '2025-10-12 11:08:58', '2025-10-12 11:08:58');
 
 --
 -- Indexes for dumped tables
@@ -274,7 +281,8 @@ ALTER TABLE `sessions`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `users_email_unique` (`email`);
+  ADD UNIQUE KEY `users_email_unique` (`email`),
+  ADD UNIQUE KEY `users_phone_number_unique` (`phone_number`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -296,13 +304,13 @@ ALTER TABLE `jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `users`
